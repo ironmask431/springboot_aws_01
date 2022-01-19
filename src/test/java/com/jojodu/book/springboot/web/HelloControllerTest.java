@@ -8,8 +8,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.hamcrest.Matchers.is;
 
 //@RunWith(SpringRunner.class) = 테스트를 진행할 Junit에 내장된 실행자
 @RunWith(SpringRunner.class)
@@ -29,6 +29,19 @@ public class HelloControllerTest {
         mvc.perform(get("/hello"))
                 .andExpect(status().isOk()) //mvc.perform 의 결과검증. (http헤더의 status가 200 인지 확인)
                 .andExpect(content().string(hello)); //mvc.perform 의 결과검증. 응답본문의 내용이 hello가 맞는지 검증
-
     }
+
+    @Test
+    public void helloDto가_리턴된다() throws Exception {
+        String name = "hello";
+        int amount = 1000;
+
+        mvc.perform(get("/hello/dto").param("name",name).param("amount",String.valueOf(amount)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name",is(name)))
+                .andExpect(jsonPath("$.amount",is(amount)));
+        //mvc.perform(get("/hello/dto").param("name",name) : api테스트시 사용될 요청파라미터 설정 (String만 허용)
+        //.andExpect(jsonPath("$.name",is(name))) : api의 json응답값을 필드별로 검증
+    }
+
 }
