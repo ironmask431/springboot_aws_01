@@ -169,7 +169,7 @@ b라는 기능을 추가햇더니 기존 a기능에 문제가 생김. 매번 모
 
 ### 2.3 롬복 소개 및 설치하기
 
-2022.01.19()
+2022.01.19(수)
 
 자바개발자의 필수라이브러리 롬복
 
@@ -221,5 +221,79 @@ b라는 기능을 추가햇더니 기존 a기능에 문제가 생김. 매번 모
 
 6.Test passed: 1 테스트 정상 실행 확인
 
+Chapter 03. 스프링 부트에서 JPA로 데이터베이스를 다뤄보자
+-------------------------------------------------------------------------------------------
+2022.01.20(목)
 
+### 3.1 JPA소개
+
+ORACLE, MYSQL 등 관계형데이터베이스 필수요소이고 웹서비스의 중심이 SQL중심이됨. 
+
+SQL은 객체지향 프로그래밍과 맞지않는 부분이 있음.
+
+기존 관계형 데이터베이스방식은 객체모델링보다는 테이블모델링에 집중하게되고 
+
+객체를 단순히 테이블형식에 맞추어 데이터 전달역할만 하는 기형적인 형태임. 
+
+JPA(자바 표준 ORM)는 SQL에 종속적인 개발을 하지않도록 할 수 있게하여, 객체지향 프로그래밍을 추구하게 해줌. 
+
+JPA를 사용하기 위해서는 Hibernate 같은 구현체가 필요함. 
+
+구현체들을 좀더 쉽게 사용할 수 있는 Spring Data JPA라는 모듈을 사용함. 
+
+* Spring Data JPA 의 장점 
+
+>구현체 교체의 용이성   
+>저장소 교체의 용이성 
+
+새로운 구현체나 새로운 db 로 교체가 용이함. 
+
+### 3.2 프로젝트에 Spring Data Jpa 적용하기 
+
+1.build.gradle 에 jpa, h2 라이브러리 등록 
+
+dependencies 에 추가 
+
+>//springboot용 spring data jpa 추상화 라이브러리   
+>implementation('org.springframework.boot:spring-boot-starter-data-jpa')   
+>//인메모리 관계형 데이터베이스, 별도의 설치없이 사용가능한 db, 애플리케이션 재시작마다 초기화   
+>implementation('com.h2database:h2')   
+
+2.domain.post 패키지 생성 / posts 패키지와 Posts 클래스 생성 
+
+>@Entity //db테이블과 링크될 class임을 표시   
+>@Getter //클래스내의 모든 필드에 getter 메소드 자동생성   
+>@NoArgsConstructor //기본 생성자 자동 추가   
+>
+>@Id //해당 테이블의 pk필드   
+>@GeneratedValue(strategy = GenerationType.IDENTITY) //pk생성규칙 (auto increment)   
+>@Column(length = 500, nullable = false) //테이블의 컬럼   
+>@Builder //해당클래스의 빌더패턴 생성, 생성자 상단에 선언시 생성자에 포함된 필드만 빌더에포함됨   
+
+>Entity 클래스에는 setter 를 만들지않는다. setter가 있는 경우   
+>인스턴스 값들이 언제 어디서 변하는지 코드상으로 명확히 구분이 어려워 복잡해짐   
+>그럼 어떻게 값을 채우는가?   
+>생성자를 통해 최종값을 채운 후 db에 삽입하고,   
+>update는 해당이벤트에 맞는 public 메소드를 호출하여 변경   
+>여기서는 생성자 대신에 @Builder 클래스를 통해 값을 채워준다.   
+>생성자보다 빌더패턴을 사용 시 어떤 필드에 어떤값을 채워야 할지 명확하게 인지 할 수 있어서 좋음.   
+
+3.interface PostsRepository 생성
+
+>보통 mybatis 에서 dao 라고 불리는 db layer 접근자   
+>jpa에서는 Repository 라고 부르며 인터페이스로 생성함.   
+>생성 후 JpaRepository<Entity클래스, pk타입> 을 상속하면   
+>기본적인 crud 메소드가 자동으로 생성됨.   
+>Entity클래스 와 Repository 는 밀접한 관계이므로  같은곳에 위치해야함.    
+
+4.PostsRepositoryTest 생성, 테스트실행
+
+>@SpringBootTest //SpringBootTest 를 사용할 경우 h2 데이터베이스를 자동실행해줌   
+>@After //junit 에서 단위테스트가 끝날때마다 수행되는 메소드, 여러테스트가 동시   
+>수행될때 h2에 데이터가 남아잇으면 다음테스트시 테스트사 실패할 수 있음.   
+
+>postsRepository.save() : 테이블 posts에 insert/update 실행   
+>id값이 있다면 update 없다면 insert 실행됨.   
+
+테스트 정상 확인
 
