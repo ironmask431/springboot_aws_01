@@ -11,9 +11,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.is;
 
-//@RunWith(SpringRunner.class) = 테스트를 진행할 Junit에 내장된 실행자
+//테스트를 진행할 Junit에 내장된 실행자
 @RunWith(SpringRunner.class)
-//@WebMvcTest = 여러 스프링테스트 어노테이션중 web mvc에 집줄할 수 있는 어노테이션
+//여러 스프링테스트 어노테이션중 web mvc에 집줄할 수 있는 어노테이션
 @WebMvcTest(controllers = HelloController.class)
 public class HelloControllerTest {
 
@@ -36,12 +36,12 @@ public class HelloControllerTest {
         String name = "hello";
         int amount = 1000;
 
-        mvc.perform(get("/hello/dto").param("name",name).param("amount",String.valueOf(amount)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name",is(name)))
-                .andExpect(jsonPath("$.amount",is(amount)));
-        //mvc.perform(get("/hello/dto").param("name",name) : api테스트시 사용될 요청파라미터 설정 (String만 허용)
-        //.andExpect(jsonPath("$.name",is(name))) : api의 json응답값을 필드별로 검증
+        mvc.perform(get("/hello/dto")
+                        .param("name",name) //api테스트시 사용될 요청파라미터 설정 (String만 허용)
+                        .param("amount",String.valueOf(amount)))
+                        .andExpect(status().isOk())
+                        .andExpect(jsonPath("$.name",is(name)))//api의 json응답값을 필드별로 검증
+                        .andExpect(jsonPath("$.amount",is(amount)));
     }
 
 }
