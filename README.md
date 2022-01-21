@@ -35,12 +35,11 @@ Chapter 01. 인텔리제이로 스프링부트 시작하기
 >A problem occurred evaluating root project 'test_01'   
 >Could not find method compile() for arguments [org.springframework.boot:spring-boot-starter-web]
 
-원인분석 구글링 :
-
+원인분석 구글링 :   
 gradle 버전 7 이상버전에서는 compile()과 testCompile() 대신
-implementation()과 testImplementation() 을 사용해야 한다고함.
+implementation()과 testImplementation() 을 사용해야 한다고함.   
 
-gradle 버전확인 : gradle > wrapper > gradle-wrapper.properties 에서 확인가능
+gradle 버전확인 : gradle > wrapper > gradle-wrapper.properties 에서 확인가능   
 
 3.에러 수정 후 저장 시 라이브러리 다운로드시작 > 우측상단 gradle 클릭 시
 
@@ -51,9 +50,8 @@ spring-boot-starter-web / spring-boot-starter-test 가 세팅된것을 확인 �
 
 1.ctrl + shift + a > share project on github > add account > 인텔리제이 깃헙계정연동함.
 
-share 클릭 > 오류 > Cannot Run Git > git is not installed. > download and install git 실행
-
-(git for window 가 설치된다.)
+share 클릭 > 오류 > Cannot Run Git > git is not installed. > download and install git 실행   
+(git for window 가 설치된다.)    
 
 2.git 설치완료 후 재실행
 
@@ -70,27 +68,21 @@ cmd 실행
 >git config --global user.eamil "ironmask431@gmail.com"  (git 설치된 버전확인)   
 >git config --list  (등록된 username과 useremail 을 확인할 수 있다.)   
 
-등록 후 다시 share project on github 실행해봄. > Successfully shared project on GitHub 메세지
-
+등록 후 다시 share project on github 실행해봄. > Successfully shared project on GitHub 메세지   
 깃헙에서 확인해보면 정상적으로 소스가 올라간 것을 확인할 수 있다.
 
 3.ignore 플러그인 설치
 
-ctrl + shift + a > plugin > 마켓플레이스에서 .ignore 검색하여 설치 > 인텔리제이 재실행
-
-프로젝트명 우클릭 > new > .ignore File > generate 로 파일생성
-
-.gitignore 파일에 커밋하지 않을 경로 추가
+ctrl + shift + a > plugin > 마켓플레이스에서 .ignore 검색하여 설치 > 인텔리제이 재실행   
+프로젝트명 우클릭 > new > .ignore File > generate 로 파일생성   
+.gitignore 파일에 커밋하지 않을 경로 추가   
 
 >.idea
 
-커밋하자 > ctrl +k > 커밋완료
-
-깃허브에 푸시하자 > ctrl + shift + k > 푸시완료
-
-깃허브에서 확인하면 .gitignore 파일이 정상적으로 push 된것을 확인할 수있다.
-
-파일명 수정 단축키 : shift + F6
+커밋하자 > ctrl +k > 커밋완료   
+깃허브에 푸시하자 > ctrl + shift + k > 푸시완료   
+깃허브에서 확인하면 .gitignore 파일이 정상적으로 push 된것을 확인할 수있다.   
+파일명 수정 단축키 : shift + F6   
 
 Chapter 02. 스프링 부트에서 테스트 코드를 작성하자
 -------------------------------------------------------------------------------------------
@@ -122,21 +114,17 @@ REFECTOR - 테스트가 통과하면 프로덕션 코드를 리팩토링
 >4.요청결과를 print로 확인   
 >5.결과가 다르면 tomcat을 중지하고 코드수정   
 
-기존방식은 매번 코드를 수정할때마다 tomcat을 재구동해야함. 구동에만 수시간을 소비할수있음.
-
-단위테스트는 매번 tocmat을 재구동할필요없다.
+기존방식은 매번 코드를 수정할때마다 tomcat을 재구동해야함. 구동에만 수시간을 소비할수있음.   
+단위테스트는 매번 tocmat을 재구동할필요없다.   
 
 2.두번째장점. 자동검증 가능. 기존방식은 print 된 요청결과를 눈으로 직접 확인 해야하지만 단위테스트는 수동검증이 필요없게됨.
 
 3.세번째장점. 개발자가 만든기능을 안전하게 보호
 
-b라는 기능을 추가햇더니 기존 a기능에 문제가 생김. 매번 모든 서비스를 테스트 할 순없음.
-
-새로운기능이 추가될때 기존 기능이 잘작동되는것을 보장해준다.
-
-단위테스트는 100%익혀야할 기술이자 습관이다. 
-
-테스트코드 작성을 도와주는 프레임워크들
+b라는 기능을 추가햇더니 기존 a기능에 문제가 생김. 매번 모든 서비스를 테스트 할 순없음.   
+새로운기능이 추가될때 기존 기능이 잘작동되는것을 보장해준다.   
+단위테스트는 100%익혀야할 기술이자 습관이다.    
+테스트코드 작성을 도와주는 프레임워크들   
 
 >java - JUNIT
 
@@ -171,9 +159,8 @@ b라는 기능을 추가햇더니 기존 a기능에 문제가 생김. 매번 모
 
 2022.01.19(수)
 
-자바개발자의 필수라이브러리 롬복
-
-롬복은 getter, setter 등을 어노테이션으로 자동생성해줌
+자바개발자의 필수라이브러리 롬복   
+롬복은 getter, setter 등을 어노테이션으로 자동생성해줌   
 
 1.build.gradle 에 롬복추가
 
@@ -227,19 +214,13 @@ Chapter 03. 스프링 부트에서 JPA로 데이터베이스를 다뤄보자
 
 ### 3.1 JPA소개
 
-ORACLE, MYSQL 등 관계형데이터베이스 필수요소이고 웹서비스의 중심이 SQL중심이됨. 
-
-SQL은 객체지향 프로그래밍과 맞지않는 부분이 있음.
-
-기존 관계형 데이터베이스방식은 객체모델링보다는 테이블모델링에 집중하게되고 
-
-객체를 단순히 테이블형식에 맞추어 데이터 전달역할만 하는 기형적인 형태임. 
-
-JPA(자바 표준 ORM)는 SQL에 종속적인 개발을 하지않도록 할 수 있게하여, 객체지향 프로그래밍을 추구하게 해줌. 
-
-JPA를 사용하기 위해서는 Hibernate 같은 구현체가 필요함. 
-
-구현체들을 좀더 쉽게 사용할 수 있는 Spring Data JPA라는 모듈을 사용함. 
+ORACLE, MYSQL 등 관계형데이터베이스 필수요소이고 웹서비스의 중심이 SQL중심이됨.    
+SQL은 객체지향 프로그래밍과 맞지않는 부분이 있음.   
+기존 관계형 데이터베이스방식은 객체모델링보다는 테이블모델링에 집중하게되고    
+객체를 단순히 테이블형식에 맞추어 데이터 전달역할만 하는 기형적인 형태임.    
+JPA(자바 표준 ORM)는 SQL에 종속적인 개발을 하지않도록 할 수 있게하여, 객체지향 프로그래밍을 추구하게 해줌.    
+JPA를 사용하기 위해서는 Hibernate 같은 구현체가 필요함.    
+구현체들을 좀더 쉽게 사용할 수 있는 Spring Data JPA라는 모듈을 사용함.    
 
 * Spring Data JPA 의 장점 
 
@@ -332,11 +313,9 @@ src/main/resources/ 에 파일생성 - application.properties , 내용추가
 * Domain model
     * @Entity 등을 의미 , 비즈니스 처리를 담당해야 하는곳.
 
-기존 spring 방식은 모든 로직이 서비스클래스에서만 처리됨. (컨트롤러나 service)
-
-그러다보니 서비스계층을 나눠놓은것이 무의미함. 
-
-그러나 이것을 도메인모델에서 처리하면 단순하게 처리 할수있음.
+기존 spring 방식은 모든 로직이 서비스클래스에서만 처리됨. (컨트롤러나 service)   
+그러다보니 서비스계층을 나눠놓은것이 무의미함.    
+그러나 이것을 도메인모델에서 처리하면 단순하게 처리 할수있음.   
 
 예시)
 >derivery.cancel();   
@@ -351,18 +330,18 @@ src/main/resources/ 에 파일생성 - application.properties , 내용추가
 * PostsService.java
 * PostsApiController.java 
 
-기존 스프링에서는 Controller 와 Service에서 @Autowired 를 통해서 bean을 주입받으나 여기선 안씀.
-대신 생성자를 통해 주입받는다. 생성자는 
-@RequiredArgsConstructor 롬복 어노테이션을 통해서 자동으로 생성된다. 
-(클래스에서 final 이 선언된 모든 필드를 인자값으로 하는 생성자를 생성해줌.)
+기존 스프링에서는 Controller 와 Service에서 @Autowired 를 통해서 bean을 주입받으나 여기선 안씀.   
+대신 생성자를 통해 주입받는다. 생성자는    
+@RequiredArgsConstructor 롬복 어노테이션을 통해서 자동으로 생성된다.    
+(클래스에서 final 이 선언된 모든 필드를 인자값으로 하는 생성자를 생성해줌.)   
 
-Entity 클래스와 유사한형태이지만 Dto 클래스를 따로 만들어줌.
-그 이유는 Entity를  Request, Response 용 Dto 클래스로 사용해선 안되기 때문. 
-Entity 클래스는 DB와 맞닿은 핵심 클래스로 Entity 클래스를 기준으로 테이블이 생성되고
-스키마가 변경됨. 화면 변경을 위해 Entity 클래스가 수정되면 안됨. 
+Entity 클래스와 유사한형태이지만 Dto 클래스를 따로 만들어줌.   
+그 이유는 Entity를  Request, Response 용 Dto 클래스로 사용해선 안되기 때문.    
+Entity 클래스는 DB와 맞닿은 핵심 클래스로 Entity 클래스를 기준으로 테이블이 생성되고   
+스키마가 변경됨. 화면 변경을 위해 Entity 클래스가 수정되면 안됨.    
+View Layer와 DB Layer를 철지하게 분리하기위함.    
+Entity 클래스와 컨트롤러에서 쓸 Dto 클래스는 꼭 분리해서 쓴다.   
 
-View Layer와 DB Layer를 철지하게 분리하기위함. 
-Entity 클래스와 컨트롤러에서 쓸 Dto 클래스는 꼭 분리해서 쓴다.
 
 
 
