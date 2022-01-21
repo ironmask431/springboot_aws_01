@@ -1,4 +1,4 @@
-package com.jojodu.book.springboot.domain.posts;
+package com.jojodu.book.springboot.web.posts;
 
 import com.jojodu.book.springboot.domain.post.Posts;
 import com.jojodu.book.springboot.domain.post.PostsRepository;
