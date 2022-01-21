@@ -23,7 +23,7 @@ public class Posts {
 
     private String author;
 
-    @Builder //해당클래스의 빌더패턴 생성, 생성자 상단에 선언시 생성자에 포함된 필드만 빌더에포함됨
+    @Builder //해당클래스의 빌더패턴 생성. 생성자 대신에 @Builder으로 값을 채워주는게 더 좋음.
     public Posts(String title, String content, String author){
         this.title = title;
         this.content = content;
