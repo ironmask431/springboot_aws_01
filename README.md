@@ -263,8 +263,8 @@ dependencies 에 추가
 
 >@Entity //db테이블과 링크될 class임을 표시   
 >@Getter //클래스내의 모든 필드에 getter 메소드 자동생성   
->@NoArgsConstructor //기본 생성자 자동 추가   
->
+>@NoArgsConstructor //기본 생성자 자동 추가(인자값 없는 생성자) 
+
 >@Id //해당 테이블의 pk필드   
 >@GeneratedValue(strategy = GenerationType.IDENTITY) //pk생성규칙 (auto increment)   
 >@Column(length = 500, nullable = false) //테이블의 컬럼   
@@ -286,7 +286,9 @@ dependencies 에 추가
 >기본적인 crud 메소드가 자동으로 생성됨.   
 >Entity클래스 와 Repository 는 밀접한 관계이므로  같은곳에 위치해야함.    
 
-4.PostsRepositoryTest 생성, 테스트실행
+### 3.3 Spring Data JPA 테스트코드 작성하기  
+
+1.PostsRepositoryTest 생성, 테스트실행
 
 >@SpringBootTest //SpringBootTest 를 사용할 경우 h2 데이터베이스를 자동실행해줌   
 >@After //junit 에서 단위테스트가 끝날때마다 수행되는 메소드, 여러테스트가 동시   
@@ -296,4 +298,71 @@ dependencies 에 추가
 >id값이 있다면 update 없다면 insert 실행됨.   
 
 테스트 정상 확인
+
+2.테스트시 콘솔에서 실제 쿼리 확인하기 
+
+src/main/resources/ 에 파일생성 - application.properties , 내용추가
+
+>spring.jpa.show_sql=true   
+>spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect   
+
+테스트 실행시 콘솔에서 실제 create, insert sql문을 볼 수 있다. 
+
+
+### 3.4 등록/수정/조회 API 만들기 
+
+2022.01.21(금)
+
+1.api를 만들기위해선 총 3개의 클래스가 필요함
+
+* Request 데이터를 받을 dto
+* api 요청을 받을 controller
+* 트랜잭션,도메인 기능간의 순서를 보장하는 service   
+
+2.Spring WEB 계층
+
+* Web Layer
+    * 흔히 사용하는 컨트롤러 @Controller 와 jsp등 뷰템플릿영역
+* Service Layer
+    * @Service 영역 Controller 와 Dao의 중간영역 @Transactional 이 사용되어야함.   
+* Repository Layer
+    * DB에 접근하는 영역 예전 DAO 영역 
+* Dtos
+    * 계층간에 데이터전달을 위한 객체 
+* Domain model
+    * @Entity 등을 의미 , 비즈니스 처리를 담당해야 하는곳.
+
+기존 spring 방식은 모든 로직이 서비스클래스에서만 처리됨. (컨트롤러나 service)
+
+그러다보니 서비스계층을 나눠놓은것이 무의미함. 
+
+그러나 이것을 도메인모델에서 처리하면 단순하게 처리 할수있음.
+
+예시)
+>derivery.cancel();   
+>order.cancel();   
+>billing.cancel();   
+
+각자가 본인의 취소이벤트를 하며, 서비스메소드는 이들의 순서만 정해줌. 
+
+3.Controller, Dto, Service 를 만들어보자.
+
+* PostsSaveRequestDto.java
+* PostsService.java
+* PostsApiController.java 
+
+기존 스프링에서는 Controller 와 Service에서 @Autowired 를 통해서 bean을 주입받으나 여기선 안씀.
+대신 생성자를 통해 주입받는다. 생성자는 
+@RequiredArgsConstructor 롬복 어노테이션을 통해서 자동으로 생성된다. 
+(클래스에서 final 이 선언된 모든 필드를 인자값으로 하는 생성자를 생성해줌.)
+
+Entity 클래스와 유사한형태이지만 Dto 클래스를 따로 만들어줌.
+그 이유는 Entity를  Request, Response 용 Dto 클래스로 사용해선 안되기 때문. 
+Entity 클래스는 DB와 맞닿은 핵심 클래스로 Entity 클래스를 기준으로 테이블이 생성되고
+스키마가 변경됨. 화면 변경을 위해 Entity 클래스가 수정되면 안됨. 
+
+View Layer와 DB Layer를 철지하게 분리하기위함. 
+Entity 클래스와 컨트롤러에서 쓸 Dto 클래스는 꼭 분리해서 쓴다.
+
+
 
