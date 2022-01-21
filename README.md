@@ -249,7 +249,7 @@ dependencies 에 추가
 >@Id //해당 테이블의 pk필드   
 >@GeneratedValue(strategy = GenerationType.IDENTITY) //pk생성규칙 (auto increment)   
 >@Column(length = 500, nullable = false) //테이블의 컬럼   
->@Builder //해당클래스의 빌더패턴 생성, 생성자 상단에 선언시 생성자에 포함된 필드만 빌더에포함됨   
+>@Builder //해당클래스의 빌더패턴 생성. 생성자 대신에 @Builder으로 값을 채워주는게 더 좋음. 
 
 >Entity 클래스에는 setter 를 만들지않는다. setter가 있는 경우   
 >인스턴스 값들이 언제 어디서 변하는지 코드상으로 명확히 구분이 어려워 복잡해짐   
