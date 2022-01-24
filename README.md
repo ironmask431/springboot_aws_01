@@ -136,8 +136,9 @@ b라는 기능을 추가햇더니 기존 a기능에 문제가 생김. 매번 모
 
 * Application.java 작성 (springBoot 내장was 구동 컨트롤러)
 
-      @SpringBootApplication : 스프링부트의 자동설정, 스프링 bean 읽기와 생성 자동설정, 이 어노테이션이 있는 위치부터   
-      설정을 읽어가기 때문에 이 클래스는 항상 프로젝트 최상단에 위치해야함.
+      @SpringBootApplication : 스프링부트의 자동설정, 스프링 bean 읽기와 생성 자동설정,    
+      이 어노테이션이 있는 위치부터 설정을 읽어가기 때문에 이 클래스는 항상 프로젝트    
+      최상단에 위치해야함.   
 
 * HelloController.java 생성 (간단한 get ('/hello') 요청을 받는 컨트롤러)
 
