@@ -34,8 +34,8 @@ Chapter 01. 인텔리제이로 스프링부트 시작하기
 
 2.build.gradle 수정 후 저장 시 아래와 같은 에러 발생
 
->A problem occurred evaluating root project 'test_01'   
->Could not find method compile() for arguments [org.springframework.boot:spring-boot-starter-web]
+    A problem occurred evaluating root project 'test_01'   
+    Could not find method compile() for arguments [org.springframework.boot:spring-boot-starter-web]
 
 원인분석 구글링 :   
 gradle 버전 7 이상버전에서는 compile()과 testCompile() 대신
@@ -59,16 +59,16 @@ share 클릭 > 오류 > Cannot Run Git > git is not installed. > download and in
 
 commit 할 경로 설정 > .idea 폴더는 생략함. (인텔리제이프로젝트 생성 시 자동으로 생성되는 파일들이라서)
 
->can't finish github sharing process 
+    can't finish github sharing process 
 
 에러 발생 (userName 과 Email 을 등록하라는 내용)
 
 cmd 실행
     
->git --version (git 설치된 버전확인)   
->git config --global user.name "ironmask431"   
->git config --global user.eamil "ironmask431@gmail.com"  (git 설치된 버전확인)   
->git config --list  (등록된 username과 useremail 을 확인할 수 있다.)   
+    git --version (git 설치된 버전확인)   
+    git config --global user.name "ironmask431"   
+    git config --global user.eamil "ironmask431@gmail.com"  (git 설치된 버전확인)   
+    git config --list  (등록된 username과 useremail 을 확인할 수 있다.)   
 
 등록 후 다시 share project on github 실행해봄. > Successfully shared project on GitHub 메세지   
 깃헙에서 확인해보면 정상적으로 소스가 올라간 것을 확인할 수 있다.
@@ -79,7 +79,7 @@ ctrl + shift + a > plugin > 마켓플레이스에서 .ignore 검색하여 설치
 프로젝트명 우클릭 > new > .ignore File > generate 로 파일생성   
 .gitignore 파일에 커밋하지 않을 경로 추가   
 
->.idea
+    .idea
 
 커밋하자 > ctrl +k > 커밋완료   
 깃허브에 푸시하자 > ctrl + shift + k > 푸시완료   
@@ -110,11 +110,11 @@ REFECTOR - 테스트가 통과하면 프로덕션 코드를 리팩토링
 
 단위테스트가 없을때 개발방법
 
->1.코드작성   
->2.tomcat 구동   
->3.postman 같은 API도구로 HTTP요청   
->4.요청결과를 print로 확인   
->5.결과가 다르면 tomcat을 중지하고 코드수정   
+1.코드작성       
+2.tomcat 구동      
+3.postman 같은 API도구로 HTTP요청      
+4.요청결과를 print로 확인      
+5.결과가 다르면 tomcat을 중지하고 코드수정      
 
 기존방식은 매번 코드를 수정할때마다 tomcat을 재구동해야함. 구동에만 수시간을 소비할수있음.   
 단위테스트는 매번 tocmat을 재구동할필요없다.   
@@ -130,27 +130,26 @@ b라는 기능을 추가햇더니 기존 a기능에 문제가 생김. 매번 모
 
 >java - JUNIT
 
-
 ### 2.2 Hello Controller 테스트코드 작성하기
 
 2022.01.17(월)
 
 * Application.java 작성 (springBoot 내장was 구동 컨트롤러)
 
->@SpringBootApplication : 스프링부트의 자동설정, 스프링 bean 읽기와 생성 자동설정, 이 어노테이션이 있는 위치부터   
->설정을 읽어가기 때문에 이 클래스는 항상 프로젝트 최상단에 위치해야함.
+      @SpringBootApplication : 스프링부트의 자동설정, 스프링 bean 읽기와 생성 자동설정, 이 어노테이션이 있는 위치부터   
+      설정을 읽어가기 때문에 이 클래스는 항상 프로젝트 최상단에 위치해야함.
 
 * HelloController.java 생성 (간단한 get ('/hello') 요청을 받는 컨트롤러)
 
->@RestController = 컨트롤러를 json을 반환하는 컨트롤러로 만들어줍니다.   
->예전에는 @ResponseBody를 각 메소드마다 선언했던것을 한번에 사용 할 수 있도록 해줍니다.   
->@GetMapping = http method인 get의 요청을 받을 수 있는 api를 만들어줍니다.   
->예전에는 @RequestMapping(method=RequestMethod.GET) 으로 쓰이던것.   
+      @RestController = 컨트롤러를 json을 반환하는 컨트롤러로 만들어줍니다.   
+      예전에는 @ResponseBody를 각 메소드마다 선언했던것을 한번에 사용 할 수 있도록 해줍니다.   
+      @GetMapping = http method인 get의 요청을 받을 수 있는 api를 만들어줍니다.   
+      예전에는 @RequestMapping(method=RequestMethod.GET) 으로 쓰이던것.   
 
 * HelloControllerTest.java 생성 (HelloController의 '/hello' get요청 테스트 클래스)
 
->@RunWith(SpringRunner.class) = 테스트를 진행할 Junit에 내장된 실행자   
->@WebMvcTest = 여러 스프링테스트 어노테이션중 web mvc에 집줄할 수 있는 어노테이션   
+      @RunWith(SpringRunner.class) = 테스트를 진행할 Junit에 내장된 실행자   
+      @WebMvcTest = 여러 스프링테스트 어노테이션중 web mvc에 집줄할 수 있는 어노테이션   
 
 * 테스트 컨트롤러 생성 후 테스트 메소드 실행  > "Tests passed : 1" 테스트통과메세지 확인
 
@@ -166,7 +165,7 @@ b라는 기능을 추가햇더니 기존 a기능에 문제가 생김. 매번 모
 
 1.build.gradle 에 롬복추가
 
->dependencies 에 implementation('org.projectlombok:lombok')
+    dependencies 에 implementation('org.projectlombok:lombok')
 
 저장 후 gradle 탭에서 rombok 추가된것 확인
 
@@ -179,34 +178,36 @@ b라는 기능을 추가햇더니 기존 a기능에 문제가 생김. 매번 모
 
 1.HelloResponseDto.java 클래스 생성 
 
->@Getter : 선언된 모든 필드의 get메소드를 생성해줍니다.    
->@RequiredArgsConstructor : 선언된 모든 final 필드가 포함된 생성자를 생성해줍니다.   
->final이 없는 필드는 생성자에 포함되지 않습니다.         
+    @Getter : 선언된 모든 필드의 get메소드를 생성해줍니다.    
+    @RequiredArgsConstructor : 선언된 모든 final 필드가 포함된 생성자를 생성해줍니다.   
+    final이 없는 필드는 생성자에 포함되지 않습니다.         
 
 2.HelloResponseDtoTest 테스트 클래스 생성  / 테스트 코드 실행 
 
->assertThat : assertj 라는 테스트검증 라이브러리의 검증메소드   
->검증하고싶은 대상을 인자로 받음          
->isEqualTo : assertj 의 동등 비교 메소드            
+    assertThat : assertj 라는 테스트검증 라이브러리의 검증메소드   
+    검증하고싶은 대상을 인자로 받음          
+    isEqualTo : assertj 의 동등 비교 메소드            
 
->error: variable name not initialized in the default constructor 에러발생   
->생성자를 못찾고 있다고함.
->구글링해보니 gradle 버전 5.x 부터는 build.gradle 에 추가설정을 해줘야한다고함  
+
+    error: variable name not initialized in the default constructor 에러발생   
+
+생성자를 못찾고 있다고함.
+구글링해보니 gradle 버전 5.x 부터는 build.gradle 에 추가설정을 해줘야한다고함  
  
->build.gradle > dependencies 에 추가    
->annotationProcessor('org.projectlombok:lombok')   
->testAnnotationProcessor('org.projectlombok:lombok')
+    build.gradle > dependencies 에 추가    
+    annotationProcessor('org.projectlombok:lombok')   
+    testAnnotationProcessor('org.projectlombok:lombok')
 
 3.Test passed: 1 테스트 정상 실행 확인
 
 4.HelloController 에 "/hello/dto" mapping 추가 / name, amount를 param으로 받아서 HelloResponseDto를 return 
 
->@RequestParam("name") String name : request로 받은 param 값 name을 인자로 받음.
+    @RequestParam("name") String name : request로 받은 param 값 name을 인자로 받음.
 
 5.HelloControllerTest 에 테스트메소드 추가
 
->mvc.perform(get("/hello/dto").param("name",name) : api테스트시 사용될 요청파라미터 설정 (String만 허용)   
->.andExpect(jsonPath("$.name",is(name))) : api의 json응답값을 필드별로 검증
+    mvc.perform(get("/hello/dto").param("name",name) : api테스트시 사용될 요청파라미터 설정 (String만 허용)   
+    .andExpect(jsonPath("$.name",is(name))) : api의 json응답값을 필드별로 검증
 
 6.Test passed: 1 테스트 정상 실행 확인
 
@@ -237,48 +238,48 @@ JPA를 사용하기 위해서는 Hibernate 같은 구현체가 필요함.
 
 dependencies 에 추가 
 
->//springboot용 spring data jpa 추상화 라이브러리   
->implementation('org.springframework.boot:spring-boot-starter-data-jpa')   
->//인메모리 관계형 데이터베이스, 별도의 설치없이 사용가능한 db, 애플리케이션 재시작마다 초기화   
->implementation('com.h2database:h2')   
+    //springboot용 spring data jpa 추상화 라이브러리   
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')   
+    //인메모리 관계형 데이터베이스, 별도의 설치없이 사용가능한 db, 애플리케이션 재시작마다 초기화   
+    implementation('com.h2database:h2')   
 
 2.domain.post 패키지 생성 / posts 패키지와 Posts 클래스 생성 
 
->@Entity //db테이블과 링크될 class임을 표시   
->@Getter //클래스내의 모든 필드에 getter 메소드 자동생성   
->@NoArgsConstructor //기본 생성자 자동 추가(인자값 없는 생성자) 
+    @Entity //db테이블과 링크될 class임을 표시   
+    @Getter //클래스내의 모든 필드에 getter 메소드 자동생성   
+    @NoArgsConstructor //기본 생성자 자동 추가(인자값 없는 생성자) 
 
->@Id //해당 테이블의 pk필드   
->@GeneratedValue(strategy = GenerationType.IDENTITY) //pk생성규칙 (auto increment)   
->@Column(length = 500, nullable = false) //테이블의 컬럼   
->@Builder //해당클래스의 빌더패턴 생성. 생성자 대신에 @Builder으로 값을 채워주는게 더 좋음. 
+    @Id //해당 테이블의 pk필드   
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //pk생성규칙 (auto increment)   
+    @Column(length = 500, nullable = false) //테이블의 컬럼   
+    @Builder //해당클래스의 빌더패턴 생성. 생성자 대신에 @Builder으로 값을 채워주는게 더 좋음. 
 
->Entity 클래스에는 setter 를 만들지않는다. setter가 있는 경우   
->인스턴스 값들이 언제 어디서 변하는지 코드상으로 명확히 구분이 어려워 복잡해짐   
->그럼 어떻게 값을 채우는가?   
->생성자를 통해 최종값을 채운 후 db에 삽입하고,   
->update는 해당이벤트에 맞는 public 메소드를 호출하여 변경   
->여기서는 생성자 대신에 @Builder 클래스를 통해 값을 채워준다.   
->생성자보다 빌더패턴을 사용 시 어떤 필드에 어떤값을 채워야 할지 명확하게 인지 할 수 있어서 좋음.   
+Entity 클래스에는 setter 를 만들지않는다. setter가 있는 경우    
+인스턴스 값들이 언제 어디서 변하는지 코드상으로 명확히 구분이 어려워 복잡해짐     
+그럼 어떻게 값을 채우는가?     
+생성자를 통해 최종값을 채운 후 db에 삽입하고,     
+update는 해당이벤트에 맞는 public 메소드를 호출하여 변경      
+여기서는 생성자 대신에 @Builder 클래스를 통해 값을 채워준다.      
+생성자보다 빌더패턴을 사용 시 어떤 필드에 어떤값을 채워야 할지 명확하게 인지 할 수 있어서 좋음.     
 
 3.interface PostsRepository 생성
 
->보통 mybatis 에서 dao 라고 불리는 db layer 접근자   
->jpa에서는 Repository 라고 부르며 인터페이스로 생성함.   
->생성 후 JpaRepository<Entity클래스, pk타입> 을 상속하면   
->기본적인 crud 메소드가 자동으로 생성됨.   
->Entity클래스 와 Repository 는 밀접한 관계이므로  같은곳에 위치해야함.    
+보통 mybatis 에서 dao 라고 불리는 db layer 접근자      
+jpa에서는 Repository 라고 부르며 인터페이스로 생성함.      
+생성 후 JpaRepository<Entity클래스, pk타입> 을 상속하면      
+기본적인 crud 메소드가 자동으로 생성됨.     
+Entity클래스 와 Repository 는 밀접한 관계이므로  같은곳에 위치해야함.       
 
 ### 3.3 Spring Data JPA 테스트코드 작성하기  
 
 1.PostsRepositoryTest 생성, 테스트실행
 
->@SpringBootTest //SpringBootTest 를 사용할 경우 h2 데이터베이스를 자동실행해줌   
->@After //junit 에서 단위테스트가 끝날때마다 수행되는 메소드, 여러테스트가 동시   
->수행될때 h2에 데이터가 남아잇으면 다음테스트시 테스트사 실패할 수 있음.   
+    @SpringBootTest //SpringBootTest 를 사용할 경우 h2 데이터베이스를 자동실행해줌   
+    @After //junit 에서 단위테스트가 끝날때마다 수행되는 메소드, 여러테스트가 동시   
+    수행될때 h2에 데이터가 남아잇으면 다음테스트시 테스트사 실패할 수 있음.   
 
->postsRepository.save() : 테이블 posts에 insert/update 실행   
->id값이 있다면 update 없다면 insert 실행됨.   
+    postsRepository.save() : 테이블 posts에 insert/update 실행   
+    id값이 있다면 update 없다면 insert 실행됨.   
 
 테스트 정상 확인
 
@@ -286,8 +287,8 @@ dependencies 에 추가
 
 src/main/resources/ 에 파일생성 - application.properties , 내용추가
 
->spring.jpa.show_sql=true   
->spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect   
+    spring.jpa.show_sql=true   
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect   
 
 테스트 실행시 콘솔에서 실제 create, insert sql문을 볼 수 있다. 
 
@@ -320,9 +321,10 @@ src/main/resources/ 에 파일생성 - application.properties , 내용추가
 그러나 이것을 도메인모델에서 처리하면 단순하게 처리 할수있음.   
 
 예시)
->derivery.cancel();   
->order.cancel();   
->billing.cancel();   
+
+    derivery.cancel();   
+    order.cancel();   
+    billing.cancel();   
 
 각자가 본인의 취소이벤트를 하며, 서비스메소드는 이들의 순서만 정해줌. 
 
