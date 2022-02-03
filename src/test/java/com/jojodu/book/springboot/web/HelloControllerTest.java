@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.is;
 @WebMvcTest(controllers = HelloController.class)
 public class HelloControllerTest {
 
-    //@Autowired = spring이 관리자는 bean을 주입
+    //@Autowired = spring이 관리하는 bean을 주입
     @Autowired
     private MockMvc mvc; //웹api를 테스트할 때 사용, 스프림mvc테스트의 시작점. get,post등에대한 api테스트 가능
 
