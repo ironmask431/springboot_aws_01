@@ -45,6 +45,7 @@ public class PostsRepositoryTest {
         List<Posts> postsList = postsRepository.findAll();
 
         //then
+        //조회한 데이터의 첫번째 row의 title과 content가 제대로 저장,조회되었는지 확인
         Posts posts = ((List<Posts>) postsList).get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);

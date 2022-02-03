@@ -51,17 +51,19 @@ public class PostApiControllerTest {
                 .author("author")
                 .build();
 
+        //PostsApiController 에 게시글 저장 url을 설정
         String url = "http://localhost:"+port+"/api/v1/posts";
 
         //when
+        //ResponseEntity 를 이용해서 해당url 에 requestDto로 게시글저장 실행
         ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
 
         //then
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK); //요청응답 status 정상확인
+        assertThat(responseEntity.getBody()).isGreaterThan(0L); //저장후 키값이 정상리턴되었는지 확인
 
-        List<Posts> all = postsRepository.findAll();
-        assertThat(all.get(0).getTitle()).isEqualTo(title);
+        List<Posts> all = postsRepository.findAll(); //게시글전체 조회
+        assertThat(all.get(0).getTitle()).isEqualTo(title); //게시글 첫번재row의 데이터가 정상인지 확인
         assertThat(all.get(0).getContent()).isEqualTo(content);
     }
 }
