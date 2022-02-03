@@ -5,7 +5,7 @@
 이 프로젝트는 아래와 같은 프레임워크,툴,라이브러리를 사용하고 있습니다.
 * Spring Boot 
 * Gradle
-* 
+* Git
 * lombok
 * Junit
 * Jpa
