@@ -1,7 +1,5 @@
 # springboot_aws_01
 
-<img src="https://user-images.githubusercontent.com/48856906/150992374-338afd7c-5b5c-49eb-97c1-51033a87593e.PNG"/>
-
 "스프링부트와 AWS로 혼자 구현하는 웹 서비스" 라는 책을 공부하며 만들어본 코드입니다.    
 
 아래는 학습과정 입니다.   
