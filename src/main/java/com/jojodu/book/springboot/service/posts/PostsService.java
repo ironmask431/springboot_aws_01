@@ -1,9 +1,13 @@
 package com.jojodu.book.springboot.service.posts;
 
+import com.jojodu.book.springboot.domain.post.Posts;
 import com.jojodu.book.springboot.domain.post.PostsRepository;
+import com.jojodu.book.springboot.web.dto.PostResponseDto;
+import com.jojodu.book.springboot.web.dto.PostUpdateRequestDto;
 import com.jojodu.book.springboot.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -13,5 +17,25 @@ public class PostsService {
     //postsRepository 를 통해서 insert를 하고, pk id를 리턴받음
     public Long save(PostsSaveRequestDto requestDto){
         return postsRepository.save(requestDto.toEntity()).getId();
+    }
+
+    @Transactional
+    public Long update(Long id, PostUpdateRequestDto requestDto){
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
+        posts.update(requestDto.getTitle(), requestDto.getContent());
+        return id;
+    }
+    //update 메소드에 postsRepository를 통해 별도로 쿼리를 날리는 부분이없다.
+    //이게 가능한 이유는 jpa의 영속성 컨텍스트 때문. 영속성 컨텍스트란 엔티티를 영구저장하는 환경
+    //jpa의 엔티티매니저가 활성화된 상태로(spring data jpa를 쓴다면 기본옵션)
+    //트랜잭션(@Transactional)안에서 db에서 데이터(Entity)를 가져오면 이 데이터는 영속성 컨텍스트가 유지된상태
+    //이 상태에서 해당데이터의 값을 변경하면 트랜잭션이 끝나는 시점에 자동으로 update가 됨.
+    //Entity 객체의 값만 변경하면 별도로 update 쿼리를 날릴 필요가없음.
+
+    public PostResponseDto findById (Long id){
+        Posts entity = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
+        return new PostResponseDto(entity);
     }
 }

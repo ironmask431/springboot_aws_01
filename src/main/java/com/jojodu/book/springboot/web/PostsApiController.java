@@ -1,11 +1,13 @@
 package com.jojodu.book.springboot.web;
 
 import com.jojodu.book.springboot.service.posts.PostsService;
+import com.jojodu.book.springboot.web.dto.PostResponseDto;
+import com.jojodu.book.springboot.web.dto.PostUpdateRequestDto;
 import com.jojodu.book.springboot.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.PostUpdate;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,8 +22,23 @@ public class PostsApiController {
 
     private final PostsService postsService;
 
+    //게시글 저장, id return
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto){
         return postsService.save(requestDto);
     }
+
+    //게시글 수정
+    @PutMapping("/api/v1/posts/{id}")
+    public Long update(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto){
+        return postsService.update(id,requestDto);
+    }
+
+    //게시글 조회
+    @GetMapping("/api/v1/posts/{id}")
+    public PostResponseDto findById (@PathVariable Long id){
+        return postsService.findById(id);
+    }
+
 }
+
