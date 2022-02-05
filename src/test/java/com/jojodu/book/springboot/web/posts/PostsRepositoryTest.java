@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,5 +51,31 @@ public class PostsRepositoryTest {
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
         //테스트 성공
+    }
+
+    @Test
+    public void BastTimeEntity_등록(){
+
+        //given
+        //오늘 날짜 생성
+        LocalDateTime now = LocalDateTime.of(2022,2,5,0,0,0);
+
+        //신규 Posts 저장
+        postsRepository.save(Posts.builder()
+                .title("title")
+                .content("content")
+                .author("author")
+                .build());
+        //when
+        List<Posts> list = postsRepository.findAll();
+
+        //then
+        Posts posts = list.get(0);
+        //저장된 date값 확인
+        System.out.println(">>>>creatDate = "+posts.getCreateDate()+"/modifiedDate = "+posts.getModifiedDate());
+
+        //post의 date값들이 설정한 날짜보다 미래인지 확인
+        assertThat(posts.getCreateDate()).isAfter(now);
+        assertThat(posts.getModifiedDate()).isAfter(now);
     }
 }
