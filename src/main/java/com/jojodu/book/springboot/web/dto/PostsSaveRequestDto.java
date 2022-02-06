@@ -29,7 +29,8 @@ public class PostsSaveRequestDto {
         this.author = author;
     }
 
-    //toEntity 를 통해 Dto의 값들을 Entity에 입력한다.
+    //dto로 받은 값들을 DB에 저장하기위해 Entity클래스에 데이터를 입력해야하므로
+    //toEntity() 를 통해 Dto의 값들을 Entity에 입력한다.
     public Posts toEntity(){
         return Posts.builder()
                 .title(title)

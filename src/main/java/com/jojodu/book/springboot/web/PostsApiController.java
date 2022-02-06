@@ -20,18 +20,18 @@ public class PostsApiController {
      * (클래스에서 final 이 선언된 모든 필드를 인자값으로 하는 생성자를 생성해줌.)
      */
 
-    private final PostsService postsService;
+        private final PostsService postsService;
 
-    //게시글 저장, id return
-    @PostMapping("/api/v1/posts")
-    public Long save(@RequestBody PostsSaveRequestDto requestDto){
-        return postsService.save(requestDto);
-    }
+        //게시글 저장, id return
+        @PostMapping("/api/v1/posts")
+        public Long save(@RequestBody PostsSaveRequestDto requestDto){
+            return postsService.save(requestDto);
+        }
 
-    //게시글 수정
-    @PutMapping("/api/v1/posts/{id}")
-    public Long update(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto){
-        return postsService.update(id,requestDto);
+        //게시글 수정
+        @PutMapping("/api/v1/posts/{id}")
+        public Long update(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto){
+            return postsService.update(id,requestDto);
     }
 
     //게시글 조회
