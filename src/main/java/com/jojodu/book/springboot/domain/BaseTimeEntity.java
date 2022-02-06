@@ -8,7 +8,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
-
 /*
 BaseTimeEntity 클래스는 모든 Entity의 상위클래스가 되어 Entity들의
 CreatedDate, LastModifiedDate를 자동으로 관리해준다.
@@ -22,7 +21,6 @@ BaseTimeEntity 에 Auditing 기능 부여 (Entity 생성,수정 시간저장기�
 @CreatedDate : Entity 가 생성되어 저장될때 시간이 자동저장됨.
 @LastModifiedDate : 조회한 Entity의 값을 변경할 때 시간이 자동저장됨.
  */
-
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)

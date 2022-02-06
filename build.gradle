@@ -34,11 +34,18 @@ repositories {
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    //lombok 추가
     implementation('org.projectlombok:lombok')
     annotationProcessor('org.projectlombok:lombok')
     testAnnotationProcessor('org.projectlombok:lombok')
+
     //springboot용 spring data jpa 추상화 라이브러리
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     //인메모리 관계형 데이터베이스, 별도의 설치없이 사용가능한 db, 애플리케이션 재시작마다 초기화
     implementation('com.h2database:h2')
+
+    //mustache 추가
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+
 }

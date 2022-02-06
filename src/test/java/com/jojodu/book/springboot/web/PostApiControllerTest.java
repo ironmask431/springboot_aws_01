@@ -75,6 +75,8 @@ public class PostApiControllerTest {
     @Test
     public void Posts_수정된다() throws Exception {
         //given
+
+        //테스트용 게시글 db 입력
         Posts savedPosts = postsRepository.save(
                 Posts.builder().title("title").content("content").author("author").build()
         );
@@ -83,11 +85,13 @@ public class PostApiControllerTest {
         String newTitle = "title2";
         String newContent = "content2";
 
+        //게시글 수정에 사용할 requestDto 생성
         PostUpdateRequestDto requestDto = PostUpdateRequestDto.builder().title(newTitle).content(newContent).build();
 
         //PostsApiController 에 게시글 수정 url을 설정
         String url = "http://localhost:"+port+"/api/v1/posts/"+updateId;
 
+        //게시글 수정 요청을 보낼 requestDto를 담은 requestEntity 생성
         HttpEntity<PostUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
         //when
