@@ -1,13 +1,11 @@
 package com.jojodu.book.springboot.web;
 
 import com.jojodu.book.springboot.service.posts.PostsService;
-import com.jojodu.book.springboot.web.dto.PostResponseDto;
+import com.jojodu.book.springboot.web.dto.PostsResponseDto;
 import com.jojodu.book.springboot.web.dto.PostUpdateRequestDto;
 import com.jojodu.book.springboot.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.PostUpdate;
 
 @RequiredArgsConstructor
 @RestController
@@ -19,7 +17,6 @@ public class PostsApiController {
      * @RequiredArgsConstructor 롬복 어노테이션을 통해서 자동으로 생성된다.
      * (클래스에서 final 이 선언된 모든 필드를 인자값으로 하는 생성자를 생성해줌.)
      */
-
     private final PostsService postsService;
 
     //게시글 저장, id return
@@ -36,7 +33,7 @@ public class PostsApiController {
 
     //게시글 조회
     @GetMapping("/api/v1/posts/{id}")
-    public PostResponseDto findById (@PathVariable Long id){
+    public PostsResponseDto findById (@PathVariable Long id){
         return postsService.findById(id);
     }
 

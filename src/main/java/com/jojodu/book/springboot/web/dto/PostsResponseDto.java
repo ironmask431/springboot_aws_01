@@ -1,19 +1,18 @@
 package com.jojodu.book.springboot.web.dto;
 
 import com.jojodu.book.springboot.domain.post.Posts;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class PostResponseDto {
+public class PostsResponseDto {
     private Long id;
     private String title;
     private String content;
     private String author;
 
-    public PostResponseDto(Posts entity){
+    public PostsResponseDto(Posts entity){
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.content = entity.getContent();
