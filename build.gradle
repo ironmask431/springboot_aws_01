@@ -24,6 +24,9 @@ group 'com.jojodu.book'
 version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
+
+
+
 repositories {
     mavenCentral()
 }
@@ -48,4 +51,6 @@ dependencies {
     //mustache 추가
     implementation('org.springframework.boot:spring-boot-starter-mustache')
 
+    //dev-tools추가
+    implementation('org.springframework.boot:spring-boot-devtools')
 }

@@ -25,6 +25,7 @@ public class PostsApiController {
         return postsService.save(requestDto);
     }
 
+
     //게시글 수정
     @PutMapping("/api/v1/posts/{id}")
     public Long update(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto){
@@ -37,5 +38,11 @@ public class PostsApiController {
         return postsService.findById(id);
     }
 
+    //게시글 삭제
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long Delete(@PathVariable Long id){
+        postsService.delete(id);
+        return id;
+    }
 }
 
