@@ -1,4 +1,4 @@
-var main = {
+var index = {
     init : function(){
         var _this = this;
         $('#btn-save').on('click',function(){
@@ -71,6 +71,6 @@ var main = {
                 alert(JSON.stringify(error));
             })
         }
-} //main
+} //index
 
-main.init();
+index.init();

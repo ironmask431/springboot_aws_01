@@ -19,6 +19,7 @@ public class PostsService {
     private final PostsRepository postsRepository;
 
     //postsRepository 를 통해서 insert를 하고, pk id를 리턴받음
+    @Transactional
     public Long save(PostsSaveRequestDto requestDto){
         return postsRepository.save(requestDto.toEntity()).getId();
     }
@@ -29,6 +30,7 @@ public class PostsService {
     //트랜잭션(@Transactional)안에서 db에서 데이터(Entity)를 가져오면 이 데이터는 영속성 컨텍스트가 유지된상태
     //이 상태에서 해당데이터의 값을 변경하면 트랜잭션이 끝나는 시점에 자동으로 update가 됨.
     //Entity 객체의 값만 변경하면 별도로 update 쿼리를 날릴 필요가없음.
+    //이것을 jpa의 '더티체킹' 이라고함.
     @Transactional
     public Long update(Long id, PostUpdateRequestDto requestDto){
         Posts posts = postsRepository.findById(id)
@@ -44,7 +46,6 @@ public class PostsService {
         postsRepository.delete(posts);
         //.deleteById(id) 로 id로도 삭제할 수 있음.
         //존재하는 Posts인지 먼저확인하기위해 findById()로 조회후 delete() 실행
-
     }
 
     public PostsResponseDto findById (Long id){

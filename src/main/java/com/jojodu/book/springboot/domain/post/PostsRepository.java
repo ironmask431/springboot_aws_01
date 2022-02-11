@@ -14,7 +14,7 @@ public interface PostsRepository extends JpaRepository<Posts, Long> {
     * */
 
     //findAll()은 jpa기본제공이지만, SpringDataJpa 에서 제공하지 않는 메소드는
-    //아래처럼 @Query로 실제쿼리로 작성하는예시를 보여줌
+    //아래처럼 @Query로 실제쿼리로 작성하는예시를 보여줌.
     //구동시 Validation failed for query for method public abstract java.util.List .. 에러 > nativeQuery = true 를 추가해줘야함.
     @Query(value = "SELECT * FROM Posts p ORDER BY p.ID DESC", nativeQuery = true)
     List<Posts> findAllDesc();

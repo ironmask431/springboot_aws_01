@@ -11,10 +11,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.is;
 
-//테스트를 진행할 Junit에 내장된 실행자
-@RunWith(SpringRunner.class)
-//여러 스프링테스트 어노테이션중 web mvc에 집줄할 수 있는 어노테이션
-@WebMvcTest(controllers = HelloController.class)
+@RunWith(SpringRunner.class) //테스트를 진행할 Junit에 내장된 실행자
+@WebMvcTest(controllers = HelloController.class) //여러 스프링테스트 어노테이션중 web mvc에 집줄할 수 있는 어노테이션
 public class HelloControllerTest {
 
     //@Autowired = spring이 관리하는 bean을 주입

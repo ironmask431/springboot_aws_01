@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 //SpringBootTest.WebEnvironment.RANDOM_PORT : 랜덤포트로 테스트할 시 사용
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PostApiControllerTest {
+public class PostsApiControllerTest {
 
     @LocalServerPort
     private int port;
