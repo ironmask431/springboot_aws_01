@@ -50,4 +50,7 @@ dependencies {
 
     //dev-tools추가
     implementation('org.springframework.boot:spring-boot-devtools')
+
+    //oauth 추가
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
 }
