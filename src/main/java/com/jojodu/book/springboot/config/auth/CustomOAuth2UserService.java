@@ -32,7 +32,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
-        //OAuth2UserService 를 통해 oAuth2User 정보를 가져옴.
+        //OAuth2UserService 를 통해 oAuth2User(로그인한 유저) 정보를 가져옴.
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         //현재 로그인 진행중인 서비스를 구분하는 코드. (구글, 네이버, 카카오등)
@@ -48,8 +48,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         //이후 네이버등 다른 소셜로그인도 이 클래스를 사용합니다.
 
         User user = saveOrUpdate(attributes);
+        //로그인 user정보 DB insert or update 실행
         httpSession.setAttribute("user",new SessionUser(user));
-        //SessionUser = 세션에 사용자정보 담기위한 클래스
+        //SessionUser = 세션에 사용자정보 담기위해 만든 클래스
 
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey()))
                 ,attributes.getAttributes()
@@ -64,7 +65,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .orElse(attributes.toEntity());
         //attributes의 이메일로 user정보를 userRepository통해서 조회한다음, 일치하는 정보가 있으면
         //해당 유저의 name과 picture를 업데이트하고, 해당 유저정보를 user 엔티티로 반환.
-        //일치하는 정보가 없으면 attributes의 정보로 새로운 user 엔티티를 만들어서 반환.
+        //일치하는 정보가 없으면 attributes의 정보로 새로운 user 엔티티를 만들어서 (DB insert) 반환.
         return userRepository.save(user);
     }
 

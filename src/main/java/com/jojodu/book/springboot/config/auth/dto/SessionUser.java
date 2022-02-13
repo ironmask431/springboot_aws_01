@@ -29,6 +29,6 @@ public class SessionUser implements Serializable {
      * 엔티티클래스 자체를 직렬화 한다면 여러가지 문제가 생길 수 있음.
      * @OneToMany, @ManyToMany 등 자식엔티티를 가지고있다면 자식까지 직렬화되어
      * 성능이슈, 부수효과가 발생 할 수 있음.
-     * 그래서 직렬화 기능을 가진 세션Dto를 따로 만드는것이 운영유지보수에 좋음.
+     * 그래서 직렬화 기능을 가진 세션Dto(SessionUser)를 따로 만드는것이 운영유지보수에 좋음.
      */
 }

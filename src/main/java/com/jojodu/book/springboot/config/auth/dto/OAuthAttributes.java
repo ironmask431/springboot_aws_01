@@ -46,8 +46,8 @@ public class OAuthAttributes {
     }
 
     //User Entity를 생성합니다.
-    //OAuthAttributes 에서 엔티티를 생성하는 시점은 처음 가입할때입니다.
-    //가입할때의 기본 권한을 GUEST로 줍니다.
+    //OAuthAttributes 에서 엔티티를 생성하는 시점(DB insert)은 처음 로그인할때입니다.
+    //최초 생성할때의 기본 권한을 GUEST로 줍니다.
     public User toEntity(){
         return User.builder()
                 .name(name)
