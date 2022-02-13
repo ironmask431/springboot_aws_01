@@ -12,5 +12,6 @@
 * mustache(머스테치)
 * jquery
 * bootstrap
+* SpringSecurity + OAuth2 소셜로그인
 * Git
 
