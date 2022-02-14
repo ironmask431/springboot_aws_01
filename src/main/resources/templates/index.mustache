@@ -9,7 +9,11 @@
                     <a href="/logout" class="btn btn-info active" role="button">Logout</a>
                 {{/userName}}
                 {{^userName}} <!-- userName 이 없을 경우 -->
-                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                    <!-- 네이버 로그인url 은 application.properties 에 등록한 redirect-uri에 맞춰 자동등록-->
+                    <!-- /oauth2/authorization/ 까지는 고정 마지막 path만 각 소셜 로그인코드 사용-->
+                    <a href="/oauth2/authorization/google" class="btn btn-secondary active" role="button">Google Login</a>
+                    <a href="/oauth2/authorization/naver" class="btn btn-success active" role="button">Naver Login</a>
+                    <a href="/oauth2/authorization/kakao" class="btn btn-warning active" role="button">kakao Login</a>
                 {{/userName}}
             </div>
         </div>

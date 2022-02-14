@@ -1,5 +1,6 @@
 package com.jojodu.book.springboot.web;
 
+import com.jojodu.book.springboot.config.auth.LoginUser;
 import com.jojodu.book.springboot.config.auth.dto.SessionUser;
 import com.jojodu.book.springboot.service.posts.PostsService;
 import com.jojodu.book.springboot.web.dto.PostsResponseDto;
@@ -20,9 +21,11 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        //SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        //@LoginUser 를 사용하기 때문에 위 코드는 주석처리함.
+        //어느 컨트롤러 든지 @LoginUser 를 사용하면 세션유저 정보를 가져올 수 있습니다.
         if(user != null){
             model.addAttribute("userName",user.getName());
         }

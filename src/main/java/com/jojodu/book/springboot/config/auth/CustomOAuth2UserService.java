@@ -35,7 +35,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         //OAuth2UserService 를 통해 oAuth2User(로그인한 유저) 정보를 가져옴.
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        //현재 로그인 진행중인 서비스를 구분하는 코드. (구글, 네이버, 카카오등)
+        //현재 로그인 진행중인 서비스를 구분하는 코드. (구글, 네이버(=naver), 카카오등)
 
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName();
