@@ -35,17 +35,20 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         //OAuth2UserService 를 통해 oAuth2User(로그인한 유저) 정보를 가져옴.
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        //현재 로그인 진행중인 서비스를 구분하는 코드. (구글, 네이버(=naver), 카카오등)
+        //현재 로그인 진행중인 서비스를 구분하는 코드. (구글, 네이버(=naver), 카카오(=kakao)등)
+
+        System.out.println("check - registrationId="+ registrationId);
 
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName();
         //OAuth2 로그인 진행 시 키가되는 필드값. PK와 같은 의미
         //구글의 경우 기본적으로 코드지원하지만, 네이버,카카오는 지원하지않음 구글의 기본코드는 "sub"
-        //이후 네이버로그인과 구글로그인을 동시 지원할 때 사용됩니다.
+        //네이버 카카오는 application-oauth.properties 에 정의한 user-name-attribute 값으로 설정됨.
+
+        System.out.println("check - userNameAttributeName="+ userNameAttributeName);
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName,oAuth2User.getAttributes());
         //OAuthAttributes = OAuth2UserService 를 통해서 가져온 oAuth2User의 attribute를 담을 클래스입니다.
-        //이후 네이버등 다른 소셜로그인도 이 클래스를 사용합니다.
 
         User user = saveOrUpdate(attributes);
         //로그인 user정보 DB insert or update 실행

@@ -54,6 +54,9 @@ dependencies {
     //oauth 추가 (소셜로그인등 클라이언트입장에서 소셜 기능 구현 기능)
     implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
 
-    //jdbc추가
+    //스프링시큐리티 테스트를 위한 여러도구 지원
+    testImplementation('org.springframework.security:spring-security-test')
+
+    //session-jdbc추가
     implementation('org.springframework.session:spring-session-jdbc')
 }
