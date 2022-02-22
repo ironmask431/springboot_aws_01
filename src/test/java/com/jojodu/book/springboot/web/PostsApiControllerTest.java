@@ -65,6 +65,7 @@ public class PostsApiControllerTest {
     //게시글 저장 테스트
     @Test
     @WithMockUser(roles = "USER") //테스트시 권한 "UESR" 를 부여하여 api요청할수 있게함.
+    //@WithMockUser 는 MockMvc에서만 동작하기 때문에 코드 방식변경이 필요함.
     public void Posts_등록된다() throws Exception {
         //given
         String title = "title";
@@ -85,6 +86,8 @@ public class PostsApiControllerTest {
         //ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
 
         //@SpringBootTest 에서 MockMvc 사용할 수 있는 방법으로 수정함.
+        //생성된 MockMvc를 통해 api를 테스트합니다.
+        //본문body 영역은 문자열로 표현하기 위해 ObjectMapper를 통해 문자열 JSON으로 변환합니다.
         mvc.perform(post(url)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(new ObjectMapper().writeValueAsString(requestDto)))
@@ -126,9 +129,6 @@ public class PostsApiControllerTest {
         //when
         //ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
-        //@SpringBootTest 에서 MockMvc 사용할 수 있는 방법으로 수정함.
-        //생성된 MockMvc를 통해 api를 테스트합니다.
-        //본문body 영역은 문자열로 표현하기 위해 ObjectMapper를 통해 문자열 JSON으로 변환합니다.
         mvc.perform(put(url)
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
                         .content(new ObjectMapper().writeValueAsString(requestDto)))
