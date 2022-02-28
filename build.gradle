@@ -59,4 +59,7 @@ dependencies {
 
     //session-jdbc추가
     implementation('org.springframework.session:spring-session-jdbc')
+
+    //MariaDB 드라이버 추가
+    implementation('org.mariadb.jdbc:mariadb-java-client')
 }
