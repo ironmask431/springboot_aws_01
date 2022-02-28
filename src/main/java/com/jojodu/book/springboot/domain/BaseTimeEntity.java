@@ -25,7 +25,6 @@ BaseTimeEntity 에 Auditing 기능 부여 (Entity 생성,수정 시간저장기�
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class BaseTimeEntity {
-
     @CreatedDate
     private LocalDateTime createDate;
     @LastModifiedDate

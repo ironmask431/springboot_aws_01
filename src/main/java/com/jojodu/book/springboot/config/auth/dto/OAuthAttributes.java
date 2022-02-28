@@ -7,19 +7,19 @@ import lombok.Getter;
 
 import java.util.Map;
 
-/**
- * OAuth2UserService 를 통해서 가져온 oAuth2User의 attribute를 담을 클래스
- */
-@Getter
-public class OAuthAttributes {
+    /**
+     * OAuth2UserService 를 통해서 가져온 oAuth2User의 attribute를 담을 클래스
+     */
+    @Getter
+    public class OAuthAttributes {
 
-    private Map<String, Object> attributes;
-    private String nameAttributeKey;
-    private String name;
-    private String email;
-    private String picture;
+        private Map<String, Object> attributes;
+        private String nameAttributeKey;
+        private String name;
+        private String email;
+        private String picture;
 
-    @Builder
+        @Builder
     public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey
             ,String name, String email, String picture){
         this.attributes = attributes;
