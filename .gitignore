@@ -3,5 +3,3 @@
 .idea/
 build/
 out/
-application-oauth.properties
-application-real-db.properties
