@@ -21,12 +21,14 @@ public class PostsSaveRequestDto {
     private String title;
     private String content;
     private String author;
+    private Long userId;
 
     @Builder
-    public PostsSaveRequestDto(String title, String content, String author){
+    public PostsSaveRequestDto(String title, String content, String author, Long userId){
         this.title = title;
         this.content = content;
         this.author = author;
+        this.userId = userId;
     }
 
     //dto로 받은 값들을 DB에 저장하기위해 Entity클래스에 데이터를 입력해야하므로
@@ -36,6 +38,7 @@ public class PostsSaveRequestDto {
                 .title(title)
                 .content(content)
                 .author(author)
+                .userId(userId)
                 .build();
     }
 }

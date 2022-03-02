@@ -32,13 +32,16 @@ public class PostsRepositoryTest {
         //given
         String title = "테스트 게시글";
         String content = "테스트 본문";
+        String author = "leesk83@sk.com";
+        Long userId = 0L;
 
         //postsRepository.save() : 테이블 posts에 insert/update 실행
         //id값이 있다면 update 없다면 insert 실행됨.
         postsRepository.save(Posts.builder()
                 .title(title)
                 .content(content)
-                .author("leesk83@sk.com")
+                .author(author)
+                .userId(userId)
                 .build());
 
         //when
@@ -50,6 +53,8 @@ public class PostsRepositoryTest {
         Posts posts = ((List<Posts>) postsList).get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
+        assertThat(posts.getAuthor()).isEqualTo(author);
+        assertThat(posts.getUserId()).isEqualTo(userId);
         //테스트 성공
     }
 
@@ -65,6 +70,7 @@ public class PostsRepositoryTest {
                 .title("title")
                 .content("content")
                 .author("author")
+                .userId(0L)
                 .build());
         //when
         List<Posts> list = postsRepository.findAll();

@@ -70,11 +70,14 @@ public class PostsApiControllerTest {
         //given
         String title = "title";
         String content = "content";
+        String author = "";
+        Long userId = 0L;
 
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                 .title(title)
                 .content(content)
-                .author("author")
+                .author(author)
+                .userId(userId)
                 .build();
 
         //PostsApiController 에 게시글 저장 url을 설정
@@ -101,6 +104,8 @@ public class PostsApiControllerTest {
         List<Posts> all = postsRepository.findAll(); //게시글전체 조회
         assertThat(all.get(0).getTitle()).isEqualTo(title); //게시글 첫번재row의 데이터가 정상인지 확인
         assertThat(all.get(0).getContent()).isEqualTo(content);
+        assertThat(all.get(0).getAuthor()).isEqualTo(author);
+        assertThat(all.get(0).getUserId()).isEqualTo(userId);
     }
 
     //게시글 수정 테스트
@@ -110,7 +115,7 @@ public class PostsApiControllerTest {
         //given
         //테스트용 게시글 db 입력
         Posts savedPosts = postsRepository.save(
-                Posts.builder().title("title").content("content").author("author").build()
+                Posts.builder().title("title").content("content").author("author").userId(0L).build()
         );
 
         Long updateId = savedPosts.getId();

@@ -34,11 +34,15 @@ public class Posts extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String author;
 
+    @Column(columnDefinition = "bigint(20)", nullable = false)
+    private Long userId;
+
     @Builder //해당클래스의 빌더패턴 생성. 생성자 대신에 @Builder으로 값을 채워주는게 더 좋음.
-    public Posts(String title, String content, String author){
+    public Posts(String title, String content, String author, Long userId){
         this.title = title;
         this.content = content;
         this.author = author;
+        this.userId = userId;
     }
 
     public void update(String title, String content){
