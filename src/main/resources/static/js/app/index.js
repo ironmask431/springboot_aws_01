@@ -21,10 +21,10 @@ var index = {
             alert('제목을 입력하세요');
              return;
          }
-         if(data.content == ''){
-             alert('내용을 입력하세요');
-             return;
-         }
+        if(data.content == ''){
+            alert('내용을 입력하세요');
+            return;
+        }
         $.ajax({
             type:'POST'
             ,url:'/api/v1/posts'
@@ -50,11 +50,11 @@ var index = {
         if(data.title == ''){
             alert('제목을 입력하세요');
              return;
-         }
-         if(data.content == ''){
-             alert('내용을 입력하세요');
-             return;
-         }
+        }
+        if(data.content == ''){
+            alert('내용을 입력하세요');
+            return;
+        }
         $.ajax({
             type:'PUT'
             ,url:'/api/v1/posts/'+id
