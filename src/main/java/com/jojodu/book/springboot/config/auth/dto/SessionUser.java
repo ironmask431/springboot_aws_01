@@ -15,11 +15,13 @@ public class SessionUser implements Serializable {
     private String name;
     private String email;
     private String picture;
+    private Long id;
 
     public SessionUser(User user){
         this.name = user.getName();
         this.email = user.getEmail();
         this.picture = user.getPicture();
+        this.id = user.getId();
     }
     //SessionUser 에는 인증된 사용자정보만 필요하므로, name,email,picture만 선언합니다.
 

@@ -41,7 +41,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName();
-        //OAuth2 로그인 진행 시 키가되는 필드값. PK와 같은 의미
+        //userNameAttributeName = OAuth2 로그인 진행 시 키가되는 필드값. PK와 같은 의미
         //구글의 경우 기본적으로 코드지원하지만, 네이버,카카오는 지원하지않음 구글의 기본코드는 "sub"
         //네이버 카카오는 application-oauth.properties 에 정의한 user-name-attribute 값으로 설정됨.
 
@@ -71,5 +71,4 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         //일치하는 정보가 없으면 attributes의 정보로 새로운 user 엔티티를 만들어서 (DB insert) 반환.
         return userRepository.save(user);
     }
-
 }

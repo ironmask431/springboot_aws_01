@@ -1,5 +1,7 @@
 package com.jojodu.book.springboot.web;
 
+import com.jojodu.book.springboot.config.auth.LoginUser;
+import com.jojodu.book.springboot.config.auth.dto.SessionUser;
 import com.jojodu.book.springboot.service.posts.PostsService;
 import com.jojodu.book.springboot.web.dto.PostsResponseDto;
 import com.jojodu.book.springboot.web.dto.PostUpdateRequestDto;
@@ -27,21 +29,20 @@ public class PostsApiController {
 
     //게시글 저장, id return
     @PostMapping("/api/v1/posts")
-    public Long save(@RequestBody PostsSaveRequestDto requestDto){
-        return postsService.save(requestDto);
+    public Long save(@RequestBody PostsSaveRequestDto requestDto, @LoginUser SessionUser user){
+        return postsService.save(requestDto, user);
     }
 
     //게시글 수정
     @PutMapping("/api/v1/posts/{id}")
-    public Long update(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto){
-        return postsService.update(id,requestDto);
+    public Long update(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto, @LoginUser SessionUser user){
+        return postsService.update(id,requestDto, user);
     }
 
     //게시글 삭제
     @DeleteMapping("/api/v1/posts/{id}")
-    public Long Delete(@PathVariable Long id){
-        postsService.delete(id);
-        return id;
+    public Long Delete(@PathVariable Long id, @LoginUser SessionUser user){
+        return postsService.delete(id, user);
     }
 }
 

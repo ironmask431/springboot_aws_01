@@ -4,17 +4,17 @@
         <div class="row">
             <div class="col-md-6">
                 <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
-                {{#userName}} <!-- userName 이 있을 경우 -->
-                    Logged in as : <span id="user">{{userName}}</span>
+                {{#name}} <!-- userName 이 있을 경우 -->
+                    Logged in as : <span>이름 : {{name}}</span>
                     <!-- 스프링시큐리티에서 기본 제공하는 로그이웃 url -->
                     <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-                {{/userName}}
-                {{^userName}} <!-- userName 이 없을 경우 -->
+                {{/name}}
+                {{^name}} <!-- userName 이 없을 경우 -->
                     <!-- 스프링시큐리티에서 기본 제공하는 oauth2 로그인url  -->
                     <a href="/oauth2/authorization/google" class="btn btn-secondary active" role="button">Google Login</a>
                     <a href="/oauth2/authorization/naver" class="btn btn-success active" role="button">Naver Login</a>
                     <a href="/oauth2/authorization/kakao" class="btn btn-warning active" role="button">kakao Login</a>
-                {{/userName}}
+                {{/name}}
             </div>
         </div>
         <br>

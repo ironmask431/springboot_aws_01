@@ -27,7 +27,7 @@ public class IndexController {
         //@LoginUser 를 사용하기 때문에 위 코드는 주석처리함.
         //어느 컨트롤러 든지 @LoginUser 를 사용하면 세션유저 정보를 가져올 수 있습니다.
         if(user != null){
-            model.addAttribute("userName",user.getName());
+            model.addAttribute("name",user.getName());
         }
         return "index";
     }
@@ -35,7 +35,7 @@ public class IndexController {
     @GetMapping("/posts/save")
     public String postsSave(Model model, @LoginUser SessionUser user){
         if(user != null){
-            model.addAttribute("userName",user.getName());
+            model.addAttribute("name",user.getName());
         }
         return "posts-save";
     }
@@ -44,9 +44,6 @@ public class IndexController {
     public String postsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user){
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("posts",dto);
-        if(user != null){
-            model.addAttribute("userName",user.getName());
-        }
         return "posts-update";
     }
 }

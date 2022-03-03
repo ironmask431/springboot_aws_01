@@ -1,5 +1,6 @@
 package com.jojodu.book.springboot.service.posts;
 
+import com.jojodu.book.springboot.config.auth.dto.SessionUser;
 import com.jojodu.book.springboot.domain.post.Posts;
 import com.jojodu.book.springboot.domain.post.PostsRepository;
 import com.jojodu.book.springboot.web.dto.PostsResponseDto;
@@ -20,7 +21,8 @@ public class PostsService {
 
     //postsRepository 를 통해서 insert를 하고, pk id를 리턴받음
     @Transactional
-    public Long save(PostsSaveRequestDto requestDto){
+    public Long save(PostsSaveRequestDto requestDto, SessionUser user){
+        if(user != null) requestDto.setUserId(user.getId());
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
@@ -32,20 +34,29 @@ public class PostsService {
     //Entity 객체의 값만 변경하면 별도로 update 쿼리를 날릴 필요가없음.
     //이것을 jpa의 '더티체킹' 이라고함.
     @Transactional
-    public Long update(Long id, PostUpdateRequestDto requestDto){
+    public Long update(Long id, PostUpdateRequestDto requestDto, SessionUser user){
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
+        //글의 작성자id와 로그인유저의 id가 불일치하면 수정불가
+        if(user != null && !posts.getUserId().equals(user.getId())){
+            return -1L;
+        }
         posts.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
 
     @Transactional
-    public void delete(Long id){
+    public Long delete(Long id, SessionUser user){
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
+        //글의 작성자id와 로그인유저의 id가 불일치하면 삭제불가
+        if(user != null && !posts.getUserId().equals(user.getId())){
+            return -1L;
+        }
         postsRepository.delete(posts);
         //.deleteById(id) 로 id로도 삭제할 수 있음.
         //존재하는 Posts인지 먼저확인하기위해 findById()로 조회후 delete() 실행
+        return id;
     }
 
     public PostsResponseDto findById (Long id){
