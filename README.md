@@ -22,7 +22,7 @@ http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/
 * lombok
 * Junit
 * mustache(머스테치)
-* jquery, bootstrap
+* javascript, jquery, bootstrap
 * SpringSecurity + OAuth2
 * Git, GitHub
 * AWS EC2 (Linux2)
