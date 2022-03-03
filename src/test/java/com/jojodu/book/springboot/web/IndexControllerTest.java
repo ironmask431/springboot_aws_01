@@ -21,6 +21,6 @@ public class IndexControllerTest {
         String body = restTemplate.getForObject("/",String.class);
         //then
         //html 전체를 확인할 필요는 없으니 일부내용만 있는지 확인함.
-        assertThat(body).contains("스프링부트로 시작하는 웹서비스");
+        assertThat(body).contains("SpringBoot + AWS 웹서비스");
     }
 }
