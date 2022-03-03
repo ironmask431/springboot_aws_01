@@ -16,7 +16,6 @@ http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/
 
 이 프로젝트는 아래와 같은 기술들을 사용하여 만들었습니다.  
 * Java (jdk-12.0.2) 
-* IntelliJ
 * SpringBoot 
 * Gradle
 * JPA
