@@ -1,13 +1,13 @@
 # springboot_aws_01
 
 "스프링부트와 AWS로 혼자 구현하는 웹 서비스"    
-라는 책을 바탕으로 학습목적의 프로젝트를 진행하였습니다.    
+책을 바탕으로 학습목적의 프로젝트를 진행하였습니다.
 
 프로젝트 페이지 url :    
 http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/   
 
 목적 :    
-1. AWS EC2, RDS 환경세팅, 스프링부트 프로젝트 배포 경험해보기   
+1. AWS EC2 / RDS 환경세팅, 스프링부트 프로젝트 배포 경험해보기   
 2. Gradle, JPA, Junit, Oauth2 소셜로그인 기능 익히기   
 
 기능 : 
