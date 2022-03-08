@@ -7,7 +7,7 @@
 http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/   
 
 프로젝트 진행 과정   
-https://ironmask43.tistory.com/26?category=1004376
+https://ironmask43.tistory.com/category/SpringBoot%20%2B%20AWS
 
 목적 :    
 1. AWS EC2 / RDS 환경세팅, 스프링부트 프로젝트 배포 경험해보기   
