@@ -3,7 +3,7 @@
 "스프링부트와 AWS로 혼자 구현하는 웹 서비스"    
 책을 바탕으로 학습목적의 프로젝트를 진행하였습니다.
 
-프로젝트 페이지 url :    
+프로젝트 URL :    
 http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/   
 
 목적 :    
