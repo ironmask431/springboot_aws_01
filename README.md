@@ -6,7 +6,7 @@
 프로젝트 URL :    
 http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/   
 
-프로젝트 진행 과정
+프로젝트 진행 과정   
 https://ironmask43.tistory.com/26?category=1004376
 
 목적 :    
