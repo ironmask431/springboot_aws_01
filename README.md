@@ -7,7 +7,7 @@
 http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/   
 
 목적 :    
-1. AWS EC2, RDS 환경세팅, 프로젝트 배포 경험해보기   
+1. AWS EC2, RDS 환경세팅, 스프링부트 프로젝트 배포 경험해보기   
 2. Gradle, JPA, Junit, Oauth2 소셜로그인 기능 익히기   
 
 기능 : 
