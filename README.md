@@ -1,4 +1,4 @@
-# springboot_aws_01
+# springboot + AWS + Oauth2 
 
 "스프링부트와 AWS로 혼자 구현하는 웹 서비스"    
 책을 바탕으로 학습목적의 프로젝트를 진행하였습니다.
