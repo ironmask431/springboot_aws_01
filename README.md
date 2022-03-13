@@ -5,7 +5,7 @@ http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/
 
 목적 :    
 1. AWS EC2 / RDS 환경세팅, 프로젝트 배포 경험해보기   
-2. Gradle, JPA, Junit 맛보기 
+2. Gradle, JPA, Junit, IntelliJ 맛보기 
 3. SpringSecurity + Oauth2로 로그인 구축해보기
 
 기능 : 
@@ -25,6 +25,7 @@ http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/
 * Git, GitHub
 * AWS EC2 (Linux2)
 * AWS RDS (MariaDB)
+* IntelliJ
 
 웹페이지 screenshot    
 
