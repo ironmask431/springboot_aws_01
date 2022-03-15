@@ -18,7 +18,7 @@ http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/
 * Gradle
 * JPA
 * lombok
-* Junit
+* Junit 단위테스트
 * mustache(머스테치)
 * javascript, jquery, bootstrap
 * SpringSecurity + OAuth2
