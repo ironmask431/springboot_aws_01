@@ -10,7 +10,7 @@ http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/
 
 기능 : 
 1. 구글,네이버,카카오 소셜 로그인    
-2. 간단한 CRUD 게시판   
+2. REST API를 이용한 간단한 CRUD 게시판   
 
 이 프로젝트는 아래와 같은 기술들을 사용하여 만들었습니다.  
 * Java (jdk-12.0.2) 
