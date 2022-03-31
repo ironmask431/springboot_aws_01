@@ -45,6 +45,10 @@ http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/
 
 ![004](https://user-images.githubusercontent.com/48856906/157448196-9aee17ee-5d5c-4701-86b9-18fed135fb8c.PNG)
 
+* Oauth 로그인 후
+
+![로그인](https://user-images.githubusercontent.com/48856906/160970585-757dac81-5acd-4df9-809f-8b2352481f3d.PNG)
+
 * 글 작성, 수정 페이지   
 
 ![005](https://user-images.githubusercontent.com/48856906/157448205-2a0f9c0a-e25b-42f3-9e34-1edda227988d.PNG)
