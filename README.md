@@ -1,22 +1,22 @@
 # springboot + AWS + Oauth2 
 
-프로젝트 URL :    
+### 프로젝트 URL :    
 http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/   
 
 ec2 서버구동 : 
 /home/ec2-user/app/step1/deploy.sh 
 
 
-목적 :    
+### 목적 :    
 1. AWS EC2 / RDS 환경세팅, 프로젝트 배포 
 2. SpringSecurity + Oauth2 로그인 구축
 3. Gradle, JPA, Junit, IntelliJ 맛보기
 
-기능 : 
+### 기능 : 
 1. 구글,네이버,카카오 소셜 로그인    
 2. REST API를 이용한 간단한 CRUD 게시판   
 
-이 프로젝트는 아래와 같은 기술들을 사용하여 만들었습니다.  
+#### 이 프로젝트는 아래와 같은 기술들을 사용하여 만들었습니다.  
 * Java (jdk-12.0.2) 
 * SpringBoot 
 * Gradle
@@ -31,7 +31,7 @@ ec2 서버구동 :
 * AWS RDS (MariaDB)
 * IntelliJ
 
-웹페이지 screenshot    
+### 웹페이지 screenshot    
 
 * 게시판 리스트 + OAuth 로그인 버튼    
 
