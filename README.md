@@ -2,6 +2,7 @@
 
 ### 프로젝트 URL :    
 http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/   
+(인스턴스 중지됨.)
 
 ec2 서버구동 : 
 /home/ec2-user/app/step1/deploy.sh 
