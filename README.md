@@ -7,30 +7,27 @@ http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/
 ec2 서버구동 : 
 /home/ec2-user/app/step1/deploy.sh 
 
+### 이 프로젝트로 구현한 것 : 
+1. SpringSecurity + OAuth2 를 사용하여 구글,네이버,카카오 소셜 로그인 기능 구현    
+2. Java + Springboot + Spring Data Jpa 로 간단한 REST API + CRUD 게시판 구현
+3. Github 를 이요하여 AWS EC2 서버에 애플리케이션 배포하기, AWS RDS DB 와 애플리케이션 연동
 
-### 목적 :    
-1. AWS EC2 / RDS 환경세팅, 프로젝트 배포 
-2. SpringSecurity + Oauth2 로그인 구축
-3. Gradle, JPA, Junit, IntelliJ 맛보기
+### 블로그
+https://ironmask43.tistory.com/category/Toy%20Project/SpringBoot_%20Oauth_AWS?page=2
 
-### 기능 : 
-1. 구글,네이버,카카오 소셜 로그인    
-2. REST API를 이용한 간단한 CRUD 게시판   
-
-#### 이 프로젝트는 아래와 같은 기술들을 사용하여 만들었습니다.  
+#### 이 프로젝트는 아래 기술들을 활용하여 만들었습니다.  
 * Java (jdk-12.0.2) 
 * SpringBoot 
 * Gradle
 * JPA
 * lombok
-* Junit 단위테스트
+* Junit
 * mustache(머스테치)
 * javascript, jquery, bootstrap
 * SpringSecurity + OAuth2
 * Git, GitHub
 * AWS EC2 (Linux2)
 * AWS RDS (MariaDB)
-* IntelliJ
 
 ### 웹페이지 screenshot    
 
